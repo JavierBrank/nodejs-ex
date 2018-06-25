@@ -3,7 +3,7 @@ var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
 
-    
+
     
 Object.assign=require('object-assign')
 
@@ -54,7 +54,7 @@ var initDb = function(callback) {
     dbDetails.url = mongoURLLabel;
     dbDetails.type = 'MongoDB';
 
-    console.log('Connected to MongoDB at: %s', mongoURL);
+    console.log('Connectado a MongoDB at: %s', mongoURL);
   });
 };
 

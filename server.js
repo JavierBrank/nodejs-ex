@@ -1,9 +1,8 @@
 //  OpenShift sample Node application
 var express = require('express'),
+    fs      = require('fs'),
     app     = express(),
     morgan  = require('morgan');
-
-
     
 Object.assign=require('object-assign')
 
@@ -54,7 +53,7 @@ var initDb = function(callback) {
     dbDetails.url = mongoURLLabel;
     dbDetails.type = 'MongoDB';
 
-    console.log('Connectado a MongoDB at: %s', mongoURL);
+    console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
 
@@ -66,16 +65,12 @@ app.get('/', function (req, res) {
   }
   if (db) {
     var col = db.collection('counts');
-    var titulo2 = "Hola papu!";
     // Create a document with request IP and current time of request
     col.insert({ip: req.ip, date: Date.now()});
     col.count(function(err, count){
-      if (err) {
-        console.log('Error contando mensaje s:\n'+err);
-      }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails, titulo2 });
+      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails }); 
     });
-  } else {
+  } else {  
     res.render('index.html', { pageCountMessage : null});
   }
 });

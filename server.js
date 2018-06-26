@@ -73,8 +73,7 @@ app.get('/', function (req, res) {
       if (err) {
         console.log('Error contando mensaje s:\n'+err);
       }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails,
-                                titulo1 : titulo2 });
+      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails, titulo2 });
     });
   } else {
     res.render('index.html', { pageCountMessage : null});

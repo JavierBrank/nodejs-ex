@@ -66,13 +66,15 @@ app.get('/', function (req, res) {
   }
   if (db) {
     var col = db.collection('counts');
+    var titulo2 = "Hola papu!";
     // Create a document with request IP and current time of request
     col.insert({ip: req.ip, date: Date.now()});
     col.count(function(err, count){
       if (err) {
         console.log('Error contando mensaje s:\n'+err);
       }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails,
+                                titulo1 : titulo2 });
     });
   } else {
     res.render('index.html', { pageCountMessage : null});
